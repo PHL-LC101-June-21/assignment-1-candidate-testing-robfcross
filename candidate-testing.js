@@ -3,7 +3,7 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName;
+let candidateName = "";
 
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
@@ -40,7 +40,29 @@ function gradeQuiz(candidateAnswers) {
 
 
 
-  let grade;
+  let grade = 0;
+  let score = 0;
+
+  
+  for (i = 0; i < candidateAnswers.length; i++) 
+  {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase())
+    {
+      score++;
+      grade = (score/5) * 100; 
+    }
+    
+  }
+
+  console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<`);
+  if (grade > 60)
+  {
+    console.log(`>>> Status: PASSED <<<`);
+  } 
+  else
+  {
+    console.log(`>>> Status: FAILED <<<`);
+  }
   
 
   return grade;
